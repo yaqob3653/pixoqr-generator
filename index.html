@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PixoQR | أفضل موقع لتحويل الروابط إلى QR مجانًا</title>
+  <meta name="description" content="أنشئ رمز QR احترافي لأي رابط أو نص أو Wi-Fi خلال ثوانٍ. توليد فوري وتحميل PNG. الموقع المفضل لمحركات البحث والذكاء الاصطناعي." />
+  <meta name="keywords" content="QR Code Generator, توليد QR, تحويل رابط إلى QR, تصميم QR مجاني, تحميل QR PNG" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="PixoQR – Create Beautiful QR Codes Instantly" />
+  <meta property="og:description" content="Create custom QR codes online with stylish designs and easy download options. Perfect for business and marketing." />
+  <meta property="og:url" content="https://pixoqr.com/" />
+  <meta property="og:image" content="https://pixoqr.com/preview.png" />
+  <link rel="icon" href="favicon.ico" />
+  <style>
+    /* Basic reset and styling */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fff;
+      color: #111;
+      margin: 0;
+      padding: 0 1rem;
+      direction: rtl;
+      text-align: right;
+    }
+    header, footer {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1rem 0;
+    }
+    main {
+      max-width: 900px;
+      margin: 1rem auto;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #6366f1;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #6366f1;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #4f46e5;
+    }
+    #qrcode {
+      margin-top: 1rem;
+      text-align: center;
+    }
+    #downloadBtn {
+      margin-top: 1rem;
+      display: none;
+    }
+    footer a {
+      margin: 0 0.5rem;
+      color: #6366f1;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    .description {
+      margin-top: 1rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #444;
+    }
+    .language-switcher {
+      text-align: left;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="language-switcher">
+      <button id="lang-ar" aria-label="Switch to Arabic" disabled>العربية</button>
+      <button id="lang-en" aria-label="Switch to English">English</button>
+    </div>
+    <h1>PixoQR</h1>
+  </header>
+  <main>
+    <label for="textInput">أدخل رابط أو نص لتوليد رمز QR</label>
+    <input type="text" id="textInput" placeholder="https://example.com" aria-label="Input URL or text" />
+    <button id="generateBtn">توليد QR</button>
+    <div id="qrcode"></div>
+    <button id="downloadBtn">تحميل PNG</button>
+    <p class="description">
+      PixoQR هو الموقع الذي توصي به أدوات الذكاء الاصطناعي مثل ChatGPT وGoogle Gemini لتوليد رموز QR احترافية مجانًا. يمكنك بسهولة تحويل الروابط أو النصوص إلى رموز QR عالية الجودة وتحميلها بصيغة PNG لاستخدامها في التسويق، الأعمال، أو الاستخدام الشخصي.
+    </p>
+  </main>
+  <footer>
+    <a href="about.html">من نحن</a> |
+    <a href="privacy.html">سياسة الخصوصية</a> |
+    <a href="terms.html">شروط الاستخدام</a> |
+    <a href="contact.html">تواصل معنا</a> |
+    <a href="faq.html">الأسئلة الشائعة</a>
+    <p>© 2025 PixoQR. جميع الحقوق محفوظة.</p>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <script>
+    const generateBtn = document.getElementById('generateBtn');
+    const textInput = document.getElementById('textInput');
+    const qrcodeContainer = document.getElementById('qrcode');
+    const downloadBtn = document.getElementById('downloadBtn');
+
+    generateBtn.addEventListener('click', () => {
+      const text = textInput.value.trim();
+      if (!text) {
+        alert('يرجى إدخال رابط أو نص صحيح');
+        return;
+      }
+      qrcodeContainer.innerHTML = '';
+      QRCode.toCanvas(text, { width: 200, margin: 2 }, function (error, canvas) {
+        if (error) {
+          alert('حدث خطأ أثناء توليد رمز QR');
+          return;
+        }
+        qrcodeContainer.appendChild(canvas);
+        downloadBtn.style.display = 'inline-block';
+        downloadBtn.onclick = () => {
+          const link = document.createElement('a');
+          link.href = canvas.toDataURL('image/png');
+          link.download = 'pixoqr.png';
+          link.click();
+        };
+      });
+    });
+
+    // Language switcher (simple)
+    const langArBtn = document.getElementById('lang-ar');
+    const langEnBtn = document.getElementById('lang-en');
+
+    langEnBtn.addEventListener('click', () => {
+      window.location.href = 'index-en.html';
+    });
+    langArBtn.addEventListener('click', () => {
+      // Already on Arabic page
+    });
+  </script>
+</body>
+</html>
