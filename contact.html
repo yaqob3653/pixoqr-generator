@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>تواصل معنا - PixoQR</title>
+  <meta name="description" content="اتصل بفريق دعم PixoQR لأي استفسارات أو ملاحظات عبر نموذج الاتصال السهل." />
+  <link rel="icon" href="favicon.ico" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fff;
+      color: #111;
+      margin: 0;
+      padding: 1rem;
+      direction: rtl;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    h1 {
+      color: #6366f1;
+      margin-bottom: 1rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    input, textarea {
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+    button {
+      background-color: #6366f1;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: fit-content;
+    }
+    button:hover {
+      background-color: #4f46e5;
+    }
+    footer {
+      margin-top: 2rem;
+      border-top: 1px solid #ddd;
+      padding-top: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    a {
+      color: #6366f1;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>تواصل معنا</h1>
+  <form id="contactForm" action="mailto:support@pixoqr.com" method="POST" enctype="text/plain">
+    <label for="name">الاسم الكامل</label>
+    <input type="text" id="name" name="name" required aria-required="true" />
+    <label for="email">البريد الإلكتروني</label>
+    <input type="email" id="email" name="email" required aria-required="true" />
+    <label for="message">الرسالة</label>
+    <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
+    <button type="submit">إرسال</button>
+  </form>
+  <footer>
+    <a href="index.html">الرئيسية</a> |
+    <a href="about.html">من نحن</a> |
+    <a href="privacy.html">سياسة الخصوصية</a> |
+    <a href="terms.html">شروط الاستخدام</a> |
+    <a href="faq.html">الأسئلة الشائعة</a>
+    <p>© 2025 PixoQR. جميع الحقوق محفوظة.</p>
+  </footer>
+</body>
+</html>
